@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="ZHRMD_SITS">
+    <xs:complexType>
+      <xs:all>
+        <xs:element ref="EDI_DC40"/>
+        <xs:element ref="Loop-Z2SITSPER000"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EDI_DC40">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="TABNAM"/>
+        <xs:element name="MANDT"/>
+        <xs:element ref="DOCNUM"/>
+        <xs:element name="DOCREL"/>
+        <xs:element name="STATUS"/>
+        <xs:element name="DIRECT"/>
+        <xs:element name="OUTMOD"/>
+        <xs:element name="EXPRSS"/>
+        <xs:element name="TEST"/>
+        <xs:element name="IDOCTYP"/>
+        <xs:element name="CIMTYP"/>
+        <xs:element name="MESTYP"/>
+        <xs:element name="MESCOD"/>
+        <xs:element name="MESFCT"/>
+        <xs:element name="STD"/>
+        <xs:element name="STDVRS"/>
+        <xs:element name="STDMES"/>
+        <xs:element name="SNDPOR"/>
+        <xs:element name="SNDPRT"/>
+        <xs:element name="SNDPFC"/>
+        <xs:element name="SNDPRN"/>
+        <xs:element name="SNDSAD"/>
+        <xs:element name="SNDLAD"/>
+        <xs:element name="RCVPOR"/>
+        <xs:element name="RCVPRT"/>
+        <xs:element name="RCVPFC"/>
+        <xs:element name="RCVPRN"/>
+        <xs:element name="RCVSAD"/>
+        <xs:element name="RCVLAD"/>
+        <xs:element ref="CREDAT"/>
+        <xs:element ref="CRETIM"/>
+        <xs:element name="REFINT"/>
+        <xs:element name="REFGRP"/>
+        <xs:element name="REFMES"/>
+        <xs:element name="ARCKEY"/>
+        <xs:element name="SERIAL"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CREDAT" type="xs:integer"/>
+  <xs:element name="CRETIM" type="xs:integer"/>
+  <xs:element name="Loop-Z2SITSPER000">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Z2SITSPER000"/>
+        <xs:element maxOccurs="unbounded" ref="Z2SITSASS000"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Z2SITSPER000">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="SEGNAM"/>
+        <xs:element name="MANDT"/>
+        <xs:element ref="DOCNUM"/>
+        <xs:element name="SEGNUM"/>
+        <xs:element name="PSGNUM"/>
+        <xs:element name="HLEVEL"/>
+        <xs:element ref="ZZPERSON_CODE"/>
+        <xs:element ref="ZZTITLE_DESC" minOccurs="0"/>
+        <xs:element ref="ZZSURNAME"/>
+        <xs:element ref="ZZFORENAME"/>
+        <xs:element ref="ZZKNOWN_AS" minOccurs="0"/>
+        <xs:element ref="ZZMIDDLE_NAMES" minOccurs="0"/>
+        <xs:element ref="ZZINITIALS" minOccurs="0"/>
+        <xs:element ref="ZZUPDATED_BY"/>
+        <xs:element ref="ZZUPDATED_DATE"/>
+        <xs:element ref="ZZGENDER_CODE"/>
+        <xs:element ref="ZZGENDER_DESC"/>
+        <xs:element ref="ZZDATE_OF_BIRTH"/>
+        <xs:element ref="ZZDATE_OF_DEATH"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZZPERSON_CODE">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:totalDigits value="8"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZTITLE_DESC">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="15"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZSURNAME">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="40"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZFORENAME">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="40"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZKNOWN_AS">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="40"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZMIDDLE_NAMES">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="40"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZINITIALS">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="10"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZGENDER_CODE">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZGENDER_DESC">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="15"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZDATE_OF_BIRTH">
+    <xs:simpleType>
+      <xs:annotation>
+        <xs:appinfo>Date Format</xs:appinfo>
+        <xs:documentation xml:lang="en">
+          SAP date is YYYYMMDD rather than xs:date requirement of YYYY-MM-DD
+        </xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string">
+         <xs:pattern value="\d{4}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])"/>
+     </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZDATE_OF_DEATH">
+    <xs:simpleType>
+      <xs:annotation>
+        <xs:appinfo>Date Format</xs:appinfo>
+        <xs:documentation xml:lang="en">
+          SAP date is YYYYMMDD rather than xs:date requirement of YYYY-MM-DD
+        </xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"><!-- SAP date is YYYYMMDD rather than xs:date requirement of YYYY-MM-DD-->
+       <xs:pattern value="\d{4}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])"/>
+       <!-- OR is 00000000 is empty-->
+       <xs:pattern value="00000000"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="Z2SITSASS000">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="SEGNAM"/>
+        <xs:element name="MANDT"/>
+        <xs:element ref="DOCNUM"/>
+        <xs:element name="SEGNUM"/>
+        <xs:element name="PSGNUM"/>
+        <xs:element name="HLEVEL"/>
+        <xs:element ref="ZZPERSON_CODE"/>
+        <xs:element ref="ZZPERSONNEL_NUMBER"/>
+        <xs:element ref="ZZPOSITION_NUMBER"/>
+        <xs:element ref="ZZSTART_DATE"/>
+        <xs:element ref="ZZEND_DATE"/>
+        <xs:element ref="ZZPOSITION_TITLE"/>
+        <xs:element ref="ZZEMPLOYEE_GROUP"/>
+        <xs:element ref="ZZEMPLOYEE_GROUP_DESC"/>
+        <xs:element ref="ZZEMPLOYEE_SUBGROUP"/>
+        <xs:element ref="ZZEMPLOYEE_SUBGROUP_DESC"/>
+        <xs:element ref="ZZPERSONNEL_AREA"/>
+        <xs:element ref="ZZPERSONNEL_AREA_DESC"/>
+        <xs:element ref="ZZPERSONNEL_SUBAREA"/>
+        <xs:element ref="ZZPERSONNEL_SUBAREA_DESC"/>
+        <xs:element ref="ZZSTAFF_EMAIL" minOccurs="0"/>
+        <xs:element ref="ZZSTAFF_USERNAME" minOccurs="0"/>
+        <xs:element ref="ZZCIS_DEPT_CODE"/>
+        <xs:element ref="ZZCIS_FACULTY_CODE"/>
+        <xs:element ref="ZZUPDATED_BY"/>
+        <xs:element ref="ZZUPDATED_DATE"/>
+      </xs:all>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZZPERSONNEL_NUMBER">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:totalDigits value="8"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZPOSITION_NUMBER">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:totalDigits value="8"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZSTART_DATE">
+    <xs:simpleType>
+      <xs:annotation>
+        <xs:appinfo>Date Format</xs:appinfo>
+        <xs:documentation xml:lang="en">
+          SAP date is YYYYMMDD rather than xs:date requirement of YYYY-MM-DD
+        </xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"> <!-- SAP date is YYYYMMDD rather than xs:date requirement of YYYY-MM-DD-->
+        <xs:pattern value="\d{4}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZEND_DATE">
+    <xs:simpleType>
+      <xs:annotation>
+        <xs:appinfo>Date Format</xs:appinfo>
+        <xs:documentation xml:lang="en">
+          SAP date is YYYYMMDD rather than xs:date requirement of YYYY-MM-DD
+        </xs:documentation>
+      </xs:annotation>
+      <xs:restriction base="xs:string"><!-- SAP date is YYYYMMDD rather than xs:date requirement of YYYY-MM-DD-->
+       <xs:pattern value="\d{4}(0[1-9]|1[012])(0[1-9]|[12][0-9]|3[01])"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZPOSITION_TITLE">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="240"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZEMPLOYEE_GROUP">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZEMPLOYEE_GROUP_DESC">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="20"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZEMPLOYEE_SUBGROUP">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="2"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZEMPLOYEE_SUBGROUP_DESC">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="20"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZPERSONNEL_AREA">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="4"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZPERSONNEL_AREA_DESC">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="30"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZPERSONNEL_SUBAREA">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="4"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZPERSONNEL_SUBAREA_DESC">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="15"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZSTAFF_EMAIL">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="241"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZSTAFF_USERNAME">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="30"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZCIS_DEPT_CODE">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="3"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZCIS_FACULTY_CODE">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:maxLength value="3"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="ZZUPDATED_BY" type="xs:NCName"/>
+  <xs:element name="ZZUPDATED_DATE" type="xs:integer"/>
+  <xs:element name="DOCNUM" type="xs:integer"/>
+</xs:schema>
